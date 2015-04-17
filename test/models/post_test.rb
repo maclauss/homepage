@@ -4,7 +4,6 @@ class PostTest < ActiveSupport::TestCase
   
   def setup
     @user = users(:surenot)
-    # This code is not idiomatically correct.
     @post = @user.posts.build(title: "Lorem post", content: "Lorem ipsum")
   end
   
@@ -34,14 +33,6 @@ class PostTest < ActiveSupport::TestCase
   
   test "order should be most recent first" do
     assert_equal Post.first, posts(:now)
-  end
-  
-  test "associated posts should be destroyed" do
-    @user.save
-    @user.posts.first.save
-    assert_difference 'Post.count', -1 do
-      @user.destroy
-    end
   end
   
 end

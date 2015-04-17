@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.paginate(page: params[:page])
     redirect_to root_url and return unless @user.activated?
+    @posts = @user.posts.paginate(page: params[:page], :per_page => 10)
   end
   
   def new
@@ -56,15 +56,6 @@ class UsersController < ApplicationController
     end
     
     # Before filters
-    
-    # Confirms a logged-in user.
-    def redirect_unless_logged_in
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
     
     # Confirms the correct user.
     def redirect_unless_correct_user

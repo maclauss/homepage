@@ -4,18 +4,30 @@ one:
   title: "one title"
   content: "one content"
   created_at: <%= 10.minutes.ago %>
+  user: surenot
   
 two:
   title: "two title"
   content: "two content"
   created_at: <%= 3.years.ago %>
+  user: surenot
   
 three:
   title: "three title"
   content: "three content"
   created_at: <%= 2.hours.ago %>
+  user: surenot
   
 now:
   title: "now title"
   content: "now content"
   created_at: <%= Time.zone.now %>
+  user: surenot
+
+<% 10.times do |n| %>
+micropost_<%= n %>:
+  title: <%= Faker::Lorem.sentence(5) %>
+  content: <%= Faker::Lorem.sentence(300) %>
+  created_at: <%= 42.days.ago %>
+  user: surenot
+<% end %>
