@@ -2,10 +2,6 @@ class PostsController < ApplicationController
   before_action :redirect_unless_logged_in, only: [:new, :create, :edit, :update, :destroy]
   before_action :redirect_unless_admin,     only: [:new, :create, :edit, :update, :destroy]
 
-  def index
-    @posts = Post.paginate(page: params[:page], :per_page => 10)
-  end
-
   def show
     @post = Post.find(params[:id])
   end

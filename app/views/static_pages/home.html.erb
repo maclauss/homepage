@@ -3,4 +3,8 @@
   <h1>Welcome to my playground</h1>
   <h2><%= link_to "Who am I?", about_path %></h2>
 </div>
-<%= render 'posts/index' %>
+<ul class="posts">
+    <%= render @posts %>
+</ul>
+
+<%= will_paginate @posts %>
