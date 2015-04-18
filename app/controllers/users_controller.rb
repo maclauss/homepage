@@ -54,18 +54,5 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
     end
-    
-    # Before filters
-    
-    # Confirms the correct user.
-    def redirect_unless_correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
-    
-    # Confirms an admin user.
-    def redirect_unless_admin
-      redirect_to(root_url) unless current_user.admin?
-    end
   
 end

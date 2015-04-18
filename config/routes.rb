@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'password_resets/new'
-
-  get 'password_resets/edit'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#about'
+  root 'static_pages#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -18,10 +15,12 @@ Rails.application.routes.draw do
   post   'login'    => 'sessions#create'
   delete 'logout'   => 'sessions#destroy'
   get 'sessions/new'
+  get 'password_resets/new'
+  get 'password_resets/edit'
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :posts,               only: [:new, :create, :edit, :update, :destroy]
+  resources :posts
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
