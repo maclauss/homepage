@@ -305,8 +305,17 @@ span.picture {
   border-top: 1px solid #e8e8e8;
 }
 
-.skills-left {
-  border-right: 1px solid #e8e8e8;
+.skill {
+  border-bottom: 1px solid #e8e8e8;
 }
 
-.skills-right {}
+.skill-stars {
+  text-align: right;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.skill-superstar {
+  color: gold;
+  text-align: right;
+  border-bottom: 1px solid #e8e8e8;
+}

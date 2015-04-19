@@ -15,24 +15,29 @@
   <div class="col-md-4 about-section">
     <h3>Skills</h3>
     <h4>Programming</h4>
-    <div class="row">
-      <div class="col-xs-6 skills-left">
-        <%= skill("JAVA", 5) %>
-        <%= skill("C", 5) %>
-        <%= skill("SQL", 5) %>
-      </div>
-      <div class="col-xs-6 skills-right">
-        <%= skill("Rails", 4) %>
-        <%= skill("NOSQL", 3) %>
-        <%= skill("Erlang", 3) %>
-      </div>
-    </div>
+    <%= skill_superstar("JAVA") %>
+    <%= skill_superstar("C") %>
+    <%= skill_superstar("SQL") %>
+    <%= skill_lg("Rails", 4) %>
+    <%= skill_lg("NOSQL", 3) %>
+    <%= skill_lg("Erlang", 2) %>
+    <h4>Computer Science</h4>
+    <%= skill_superstar("Data Structures") %>
+    <%= skill_superstar("Algorithmics") %>
+    <%= skill_lg("Concurrency", 4) %>
+    <%= skill_lg("Windows", 4) %>
+    <%= skill_lg("UNIX", 4) %>
+    <%= skill_lg("System Administration", 3) %>
+    <%= skill_lg("Server Configuration", 3) %>
+    <h4>Security</h4>
+    <%= skill_superstar("Symmetric Cryptography") %>
+    <%= skill_superstar("Asymmetric Cryptography") %>
+    <%= skill_lg("Network / Web attacks", 4) %>
+    <%= skill_lg("PenTest", 2) %>
   </div>
   <div class="col-md-4 about-section">
     <h3>Experience</h3>
-    <h4>Team Manager</h4>
-    Experience description
+    <h4>Coming (very) soon</h4>
   </div>
-
 </div>
 
