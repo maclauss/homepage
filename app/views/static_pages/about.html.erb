@@ -1,9 +1,32 @@
 <% provide(:title, "About") %>
 <h1>About me</h1>
 <h2>
-  "I love to develop stuff and solve problems"
+  "I am a Software Engineer and I love to discover new cultures"
 </h2>
-<div class="content">
-  I am a software developer. 
+<div class="row">
+  <div class="col-md-4">
+    <h3>Me</h3>
+    <div class="content">
+      Coming from France, I love to discover new cultures and I am passionate about Asia. I have spent a third of my life abroad.
+      I worked as a Software Developer, Project Manager, and Architect for web, desktop, and mobile applications, always with the target of solving complex problems.
+      I am currently living in South Korea.
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3>Skills</h3>
+    <h4>Programming</h4>
+    <div class="row">
+      <div class="col-xs-6 skills-left">
+        <%= skill("JAVA", 5) %>
+        <%= skill("C", 5) %>
+        <%= skill("SQL", 5) %>
+      </div>
+      <div class="col-xs-6 skills-right">
+        <%= skill("Rails", 4) %>
+        <%= skill("NOSQL", 3) %>
+        <%= skill("Erlang", 3) %>
+      </div>
+    </div>
+  </div>
 </div>
 

@@ -1,10 +1,9 @@
-class Post < ActiveRecord::Base
-
+class Comment < ActiveRecord::Base
+  belongs_to :post
   belongs_to :user
-  has_many :comments, dependent: :destroy
 
   default_scope -> { order(created_at: :desc) }
+  validates :post_id, presence: true
   validates :user_id, presence: true
-  validates :title, presence: true, length: { minimum: 1, maximum: 140 }
   validates :content, presence: true, length: { minimum: 1 }
 end

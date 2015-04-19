@@ -4,3 +4,18 @@
 <div class="timestamp">
   Posted <%= time_ago_in_words(@post.created_at) %> ago by <%= link_to @post.user.name, @post.user %>.
 </div>
+
+<% if @post.comments.count > 0 %>
+  <h3>Comments (<%= @post.comments.count %>)</h3>
+  <ol class="comments">
+    <%= render @comments %>
+  </ol>
+  <%= will_paginate @comments %>
+<% else %>
+  <h3>Be the first to comment</h3>
+<% end %>
+
+<%= form_for(@comment) do |f| %>
+  <%= render 'comments/fields', f: f %>
+  <%= f.submit "Comment now", class: "btn btn-primary" %>
+<% end %>

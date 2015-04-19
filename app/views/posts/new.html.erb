@@ -1,11 +1,7 @@
 <% provide(:title, 'Create post') %>
 <h1>Write a new post</h1>
 
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <%= form_for(@post) do |f| %>
-      <%= render 'fields', f: f %>
-      <%= f.submit "Post now", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
+<%= form_for(@post) do |f| %>
+  <%= render 'fields', f: f %>
+  <%= f.submit "Post now", class: "btn btn-primary" %>
+<% end %>
