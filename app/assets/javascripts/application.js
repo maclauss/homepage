@@ -15,3 +15,5 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+//= require bootstrap-wysihtml5
+//= require bootstrap-wysihtml5/locales

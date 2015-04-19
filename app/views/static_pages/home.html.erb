@@ -3,8 +3,11 @@
   <h1>Welcome to my playground</h1>
   <h2><%= link_to "Who am I?", about_path %></h2>
 </div>
-<ul class="posts">
+<h1>
+  What's new?
+</h1>
+<ol class="posts">
     <%= render @posts %>
-</ul>
+</ol>
 
 <%= will_paginate @posts %>
