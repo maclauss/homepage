@@ -1,7 +1,7 @@
 <li id="post-<%= post.id %>">
   <h3 class="title">
     <%= link_to post.title, post %>
-    <% if logged_in? && current_user.admin? %>
+    <% if admin? %>
     | <%= link_to "edit", edit_post_path(post) %>
     | <%= link_to "delete", post, method: :delete,
                                   data: { confirm: "You sure?" } %>
@@ -10,5 +10,9 @@
   <div class="content"><%= post.content.html_safe %></div>
   <div class="timestamp">
     Posted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to post.user.name, post.user %>.
+  </div>
+  <div class="comments">
+    <h4><%= link_to "Comments (" << post.comments.count.to_s << ")", 
+                    post_path(post, :anchor => "comment-anchor") %></h4>
   </div>
 </li>
