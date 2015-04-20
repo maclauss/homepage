@@ -8,6 +8,27 @@ class HomeTest < ActionDispatch::IntegrationTest
     @post       = posts(:one)
   end
 
+  test "home as non-logged or non-admin users" do
+    get root_path
+    assert_template 'static_pages/home'
+    assert_select 'div.pagination'
+    first_page_of_posts = Post.paginate(page: 1, :per_page => 10)
+    first_page_of_posts.each do |post|
+      assert_select 'a[href=?]', post_path(post), text: post.title
+      assert_select 'a[href=?]', post_path(post)<<"#comment-anchor",
+                            text: 'Comments (' << post.comments.count.to_s << ')'
+      assert_select 'a', text: 'edit', count: 0
+      assert_select 'a', text: 'delete', count: 0
+    end
+    assert_no_difference 'Post.count' do
+      delete post_path(@post)
+    end
+    log_in_as(@non_admin)
+    assert_no_difference 'Post.count' do
+      delete post_path(@post)
+    end
+  end
+
   test "home as admin including pagination and delete links" do
     log_in_as(@admin)
     get root_path
@@ -16,6 +37,8 @@ class HomeTest < ActionDispatch::IntegrationTest
     first_page_of_posts = Post.paginate(page: 1, :per_page => 10)
     first_page_of_posts.each do |post|
       assert_select 'a[href=?]', post_path(post), text: post.title
+      assert_select 'a[href=?]', post_path(post)<<"#comment-anchor",
+                            text: 'Comments (' << post.comments.count.to_s << ')'
       assert_select 'a[href=?]', edit_post_path(post), text: 'edit'
       assert_select 'a[href=?]', post_path(post), text: 'delete',
                                                     method: :delete
@@ -23,12 +46,5 @@ class HomeTest < ActionDispatch::IntegrationTest
     assert_difference 'Post.count', -1 do
       delete post_path(@post)
     end
-  end
-
-  test "home as non-admin" do
-    log_in_as(@non_admin)
-    get root_path
-    assert_select 'a', text: 'edit', count: 0
-    assert_select 'a', text: 'delete', count: 0
   end
 end
