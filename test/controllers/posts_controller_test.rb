@@ -3,6 +3,7 @@ require 'test_helper'
 class PostsControllerTest < ActionController::TestCase
 
   def setup
+    @user = users(:surenot)
     @other_user = users(:archer)
     @post = posts(:one)
   end

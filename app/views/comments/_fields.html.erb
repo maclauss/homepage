@@ -6,6 +6,5 @@
 <%= render 'shared/error_messages', object: f.object %>
 
 <%= hidden_field_tag :post_id, @post.id %>
-<%= hidden_field_tag :user_id, current_user.id %>
 
 <%= f.text_area :content, placeholder: "Compose new comment...", :rows => "5" %>

@@ -10,6 +10,15 @@ class PostTest < ActiveSupport::TestCase
   test "should be valid" do
     assert @post.valid?
   end
+  
+  test "should be destroyed with associated user" do
+    @user.save
+    @post.save
+    post_count = Post.where(user_id: @user.id).count
+    assert_difference 'Post.count', -post_count do
+      @user.destroy
+    end
+  end
 
   test "user id should be present" do
     @post.user_id = nil
