@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
-
+  before_action :redirect_unless_logged_in, only: [:destroy]
+  before_action :redirect_unless_admin,     only: [:destroy]
+  
   def create
     post = Post.find(params[:post_id])
     @comment = post.comments.build(comment_params)
