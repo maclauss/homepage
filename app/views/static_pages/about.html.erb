@@ -1,38 +1,54 @@
 <% provide(:title, "About") %>
 <h1>About me</h1>
-<h2>"I am a Software Engineer and I love to discover new cultures"</h2>
-<div class="content">
-  Coming from France, I love to discover new cultures and I am passionate about Asia. I have spent a third of my life abroad.
-  I worked as a Software Developer, Project Manager, and Architect for web, desktop, and mobile applications, always with the target of solving complex problems.
-  I am currently living in South Korea.
+<h2>"Coming from France, I love to discover new cultures and I have spent a third of my life abroad."</h2>
+<h2>"I worked as a Software Developer, Project Manager, and Architect for web, desktop, and mobile applications. More than anything, I love to find solutions to others' problems."</h2>
+<h2>"I am currently living in South Korea."</h2>
+<div class="row">
+  <div class="col-md-4">
+    <h3>Projects / Studies</h3>
+    <h4>2015</h4>
+    <ul>
+      <li>
+        Project
+        surenot.tk
+        A multipurpose blog and personal branding website
+      </li>
+      <li>
+        Study
+        Ruby on Rails tutorial by Michael Hart
+        Everything you need to know to get started with Rails, with some reminders on good practices
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <h3>Skills</h1>
+    <h4>Programming</h4>
+    <%= skill_superstar("JAVA") %>
+    <%= skill_superstar("SQL") %>
+    <%= skill_lg("C", 4) %>
+    <%= skill_lg("Rails", 4) %>
+    <%= skill_lg("NOSQL", 3) %>
+    <%= skill_lg("Erlang", 2) %>
+    <h4>Computer Science</h4>
+    <%= skill_superstar("Data Structures") %>
+    <%= skill_superstar("Algorithmics") %>
+    <%= skill_lg("Concurrency", 4) %>
+    <%= skill_lg("System", 4) %>
+    <%= skill_lg("Administration", 2) %>
+    <h4>Security</h4>
+    <%= skill_superstar("Symmetric Cryptography") %>
+    <%= skill_superstar("Asymmetric Cryptography") %>
+    <%= skill_lg("Network / Web attacks", 4) %>
+    <%= skill_lg("PenTest", 2) %>
+    <h4>Team</h4>
+    <%= skill_superstar("Communication") %>
+    <%= skill_superstar("Versionning systems") %>
+    <%= skill_superstar("Bugtracking systems") %>
+    <%= skill_lg("Agile Methods", 4) %>
+    <%= skill_lg("Leadership", 4) %>
+  </div>
+  <div class="col-md-4">
+    <h2>Experience</h2>
+    <h3>Coming (very) soon</h3>
+  </div>
 </div>
-<h1>Skills</h1>
-<h2>"But what I do have are a very particular set of skills"</h2>
-<h4>Programming</h4>
-<%= skill_superstar("JAVA") %>
-<%= skill_superstar("SQL") %>
-<%= skill_lg("C", 4) %>
-<%= skill_lg("Rails", 4) %>
-<%= skill_lg("NOSQL", 3) %>
-<%= skill_lg("Erlang", 2) %>
-<h4>Computer Science</h4>
-<%= skill_superstar("Data Structures") %>
-<%= skill_superstar("Algorithmics") %>
-<%= skill_lg("Concurrency", 4) %>
-<%= skill_lg("System", 4) %>
-<%= skill_lg("UNIX", 4) %>
-<%= skill_lg("System Administration", 3) %>
-<h4>Security</h4>
-<%= skill_superstar("Symmetric Cryptography") %>
-<%= skill_superstar("Asymmetric Cryptography") %>
-<%= skill_lg("Network / Web attacks", 4) %>
-<%= skill_lg("PenTest", 2) %>
-<h4>Team</h4>
-<%= skill_superstar("Agile-friendly") %>
-<%= skill_superstar("Communication") %>
-<%= skill_superstar("Versionning systems") %>
-<%= skill_superstar("Bugtracking systems") %>
-<%= skill_lg("Leadership", 4) %>
-<h2>Experience</h2>
-<h3>Coming (very) soon</h3>
-
