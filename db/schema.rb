@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150421021757) do
   add_index "connections", ["user_id"], name: "index_connections_on_user_id"
 
   create_table "ip_addresses", force: :cascade do |t|
-    t.string   "ip_address"
+    t.string   "ip_address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

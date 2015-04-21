@@ -1,7 +1,7 @@
 class CreateIpAddresses < ActiveRecord::Migration
   def change
     create_table :ip_addresses do |t|
-      t.string :ip_address
+      t.string :ip_address, null: false, unique: true
 
       t.timestamps null: false
     end

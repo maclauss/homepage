@@ -4,16 +4,6 @@ class StaticPagesController < ApplicationController
 
   def home
     @posts = Post.paginate(page: params[:page], :per_page => 10)
-    ip_address = IpAddress.find_by(ip_address: request.remote_ip)
-    if ip_address.nil?
-      ip_address = IpAddress.create(ip_address: request.remote_ip)
-    end
-    connection = Connection.find_by(user_id: current_user.id, ip_address_id: ip_address.id)
-    if ( connection.nil? )
-      Connection.create(user_id: current_user.id, ip_address_id: ip_address.id)
-    else
-      connection.touch
-    end
   end
 
   def about

@@ -1,19 +1,10 @@
 <li id="connection-<%= connection.id %>">
   <span>
-    <%= if !connection.user.nil? 
-          link_to connection.user.name, connection.user
-        else
-          "Anonymous"
-        end
-    %>
+    <%= !connection.user.nil? ? link_to(connection.user.name, connection.user) : "Anonymous" %>
   </span>
   <span>
-    <%= if !connection.ip_address.nil? 
-          connection.ip_address.ip_address
-        else
-          "Unknown IP"
-        end
-    %>
+    <%= !connection.ip_address.nil? ? connection.ip_address.ip_address : "Unknown IP" %>
   </span>
-  <span><%= time_ago_in_words(connection.updated_at) %> ago.</span>
+  <span><%= time_ago_in_words(connection.updated_at) %> ago</span>
+  <span>(<%= connection.count %> pages visited)</span>
 </li>

@@ -15,7 +15,7 @@ class StaticPagesControllerTest < ActionController::TestCase
   
   test "should redirect traffic when not logged in" do
     get :traffic
-    assert_redirected_to root_url
+    assert_redirected_to login_url
   end
   
   test "should redirect traffic when non admin" do
@@ -25,6 +25,7 @@ class StaticPagesControllerTest < ActionController::TestCase
   end
   
   test "should get traffic when admin" do
+    log_in_as(@admin)
     get :traffic
     assert_response :success
     assert_select "title", "Traffic | surenot.tk"
