@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419022654) do
+ActiveRecord::Schema.define(version: 20150421021757) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -23,6 +23,26 @@ ActiveRecord::Schema.define(version: 20150419022654) do
 
   add_index "comments", ["post_id", "created_at"], name: "index_comments_on_post_id_and_created_at"
   add_index "comments", ["user_id", "created_at"], name: "index_comments_on_user_id_and_created_at"
+
+  create_table "connections", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "ip_address_id",             null: false
+    t.integer  "count",         default: 0, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "connections", ["ip_address_id"], name: "index_connections_on_ip_address_id"
+  add_index "connections", ["user_id", "ip_address_id"], name: "index_connections_on_user_id_and_ip_address_id", unique: true
+  add_index "connections", ["user_id"], name: "index_connections_on_user_id"
+
+  create_table "ip_addresses", force: :cascade do |t|
+    t.string   "ip_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "ip_addresses", ["ip_address"], name: "index_ip_addresses_on_ip_address", unique: true
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
