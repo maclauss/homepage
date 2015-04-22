@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
     # Before filters
     
     def stats
-      ip_address = IpAddress.find_or_create_by(ip_address: request.remote_ip)
+      ip = request.remote_ip
+      ip_address = IpAddress.find_or_create_by(ip_address: ip)
       if current_user.nil?
         connection = Connection.find_or_create_by(user_id: nil, ip_address_id: ip_address.id)
       else
