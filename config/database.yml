@@ -22,6 +22,8 @@ test:
 
 production:
   adapter: postgresql
-  database: db/production.pg
+  database: db/production.pgt45 h3i4
   pool: 5
   timeout: 5000
+  username: surenot_pg
+  password: <%= ENV['DATABASE_PG_PASSWORD_SURENOT_PG'] %>
