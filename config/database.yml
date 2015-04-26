@@ -27,4 +27,3 @@ production:
   pool:
   username: surenot
   password: <%= ENV["DATABASE_PG_PASSWORD_SURENOT_PG"] %>
-
