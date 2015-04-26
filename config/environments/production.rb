@@ -83,7 +83,7 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :address        => 'email-smtp.us-east-1.amazonaws.com',
     :port           => '587',
-    :authentication => :plain,
+    :authentication => :login,
     :user_name      => ENV['AWS_SES_SMTP_USERNAME'],
     :password       => ENV['AWS_SES_SMTP_PASSWORD'],
     :domain         => 'surenot.tk',
