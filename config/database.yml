@@ -26,4 +26,4 @@ production:
   pool: 5
   timeout: 5000
   username: surenot_pg
-  password: <%= ENV['DATABASE_PG_PASSWORD_SURENOT_PG'] %>
+  password: <%= ENV["DATABASE_PG_PASSWORD_SURENOT_PG"] %>
