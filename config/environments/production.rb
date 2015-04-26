@@ -78,15 +78,15 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   config.action_mailer.delivery_method = :smtp
-  host = 'surenot.herokuapp.com'
+  host = 'surenot.tk'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
+    :address        => 'email-smtp.us-east-1.amazonaws.com',
     :port           => '587',
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com',
+    :user_name      => ENV['AWS_SES_SMTP_USERNAME'],
+    :password       => ENV['AWS_SES_SMTP_PASSWORD'],
+    :domain         => 'surenot.tk',
     :enable_starttls_auto => true
   }
 end
