@@ -5,26 +5,29 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
+  #adapter: sqlite3
+  #pool: 5
+  #timeout: 5000
+  adapter: postgresql
+  encoding: unicode
+  pool:
+
+
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: surenot_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: surenot_test
 
 production:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   database: surenot_production
-  pool:
   username: surenot
   password: <%= ENV["DATABASE_PG_PASSWORD_SURENOT_PG"] %>
 

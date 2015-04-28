@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   get 'about'       => 'static_pages#about'
+  get 'angular'     => 'static_pages#angular'
   get 'traffic'     => 'static_pages#traffic'
   get 'signup'      => 'users#new'
   get    'login'    => 'sessions#new'

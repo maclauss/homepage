@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150421021757) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "post_id"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 20150421021757) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "comments", ["post_id", "created_at"], name: "index_comments_on_post_id_and_created_at"
-  add_index "comments", ["user_id", "created_at"], name: "index_comments_on_user_id_and_created_at"
+  add_index "comments", ["post_id", "created_at"], name: "index_comments_on_post_id_and_created_at", using: :btree
+  add_index "comments", ["user_id", "created_at"], name: "index_comments_on_user_id_and_created_at", using: :btree
 
   create_table "connections", force: :cascade do |t|
     t.integer  "user_id"
@@ -32,9 +35,9 @@ ActiveRecord::Schema.define(version: 20150421021757) do
     t.datetime "updated_at",                null: false
   end
 
-  add_index "connections", ["ip_address_id"], name: "index_connections_on_ip_address_id"
-  add_index "connections", ["user_id", "ip_address_id"], name: "index_connections_on_user_id_and_ip_address_id", unique: true
-  add_index "connections", ["user_id"], name: "index_connections_on_user_id"
+  add_index "connections", ["ip_address_id"], name: "index_connections_on_ip_address_id", using: :btree
+  add_index "connections", ["user_id", "ip_address_id"], name: "index_connections_on_user_id_and_ip_address_id", unique: true, using: :btree
+  add_index "connections", ["user_id"], name: "index_connections_on_user_id", using: :btree
 
   create_table "ip_addresses", force: :cascade do |t|
     t.string   "ip_address", null: false
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150421021757) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "ip_addresses", ["ip_address"], name: "index_ip_addresses_on_ip_address", unique: true
+  add_index "ip_addresses", ["ip_address"], name: "index_ip_addresses_on_ip_address", unique: true, using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -52,8 +55,8 @@ ActiveRecord::Schema.define(version: 20150421021757) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "posts", ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+  add_index "posts", ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -70,6 +73,7 @@ ActiveRecord::Schema.define(version: 20150421021757) do
     t.datetime "reset_sent_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "posts", "users"
 end
